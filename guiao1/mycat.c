@@ -1,29 +1,27 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h>
-#include <unistd.h>
+#include <sys/types.h>  
 #include <fcntl.h>
-#include <string.h>
-#include <time.h>
+#include <unistd.h>
 
-#define SIZE 1024
+#define BUFFER_SIZE 1024
 
 
-void mycat(int argc, char const argv){
-    char* buffer[SIZE] ;
-    int fd = open(argv,"O_RDONLY",6600);
-
-    ssize_t bytes_read = 0;
+int mycat(){
     
+    char *buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE);
 
-    while((bytes_read = read(fd,buffer,SIZE))){
-        write(1,buffer,bytes_read);
+    ssize_t write_bytes = 0;
+    ssize_t read_bytes = 0;
+    ssize_t bytes = 0;
+    while ((bytes = read(0,buffer,BUFFER_SIZE) > 0)){ //0 - do teclado
+        read_bytes +=bytes;
+        write_bytes+= write(1,buffer,BUFFER_SIZE); //1 -para o stdout
+    
+        //write(STDOUT_FILENO,buffer,bytes_read);
     }
+    free(buffer);
+    
+    if(write_bytes - read_bytes != 0) return -1;
 
-
-
+    return 0;
 }
-
-
-
-
