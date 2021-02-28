@@ -1,1 +1,0 @@
-int mycp(char const * from_path,char const * to_path,int buffer_size);
