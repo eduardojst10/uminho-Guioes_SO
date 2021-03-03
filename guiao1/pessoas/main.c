@@ -6,6 +6,7 @@
 #include <string.h>
 #include "pessoas.h"
 
+/*
 int main(int argc, char *argv[]){
     if(argc < 4){
         puts("Error not enough arguments");
@@ -35,8 +36,20 @@ int main(int argc, char *argv[]){
     default:
         break;
     }
+}
 
+*/
 
+int main(int argc, char* argv[]){
+    
+    int fd = open("guarda.txt",O_RDWR);
 
+    if(strcmp(argv[1],"-i") == 0){
+        int age = atoi(argv[3]);
+        return inserePessoa(argv[2],age,fd);
+    }
+    return -1;
 
 }
+
+

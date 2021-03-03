@@ -2,7 +2,7 @@
 #define PESSOAS_H
 
 typedef struct pessoa{
-    char* nome;
+    char nome[200];
     int idade;
 
     
@@ -10,7 +10,7 @@ typedef struct pessoa{
 }Pessoa;
 
 
-int inserePessoa(char* nome, int idade,char const *to_path);
+int inserePessoa(char* nome, int idade,int fd);
 
 
 #endif
