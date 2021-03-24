@@ -13,6 +13,7 @@ int main(){
          pid_t Pid_filho = getpid();    
          pid_t Pid_pai = getppid();
 	     printf("[FILHO] pid= %d  -> [PAI] pid= %d\n",Pid_filho,Pid_pai);
+         sleep(2); //adormece o processo
          _exit(i); //vai terminar o programa i
 
         }else{
